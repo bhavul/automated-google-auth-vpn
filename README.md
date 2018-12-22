@@ -14,9 +14,16 @@ If you're using a Mac (although this may work on Linux too), and have OpenVPN se
 #### Instructions to install
 1. Install oath-toolkit : `brew install oath-toolkit`
 2. Install pexpect for python : `pip install pexpect`
+3. Install OpenVpn CLI : `brew install openvpn`
+4. Add the following into `~/.bash_profile` : 
+```
+export PATH=$(brew --prefix openvpn)/sbin:$PATH
+```
+
 3. Clone/Download the repo : `git clone https://github.com/bhavul/automated-google-auth-vpn.git`
 4. Find your Google Auth VPN Secret Key. It shall be somewhat like this : `GF3H5TRATYRA4MKK`   
 NOTE : If you don't have this saved, you will need to contact the people who had set it up for you - the IT Team, or whoever. The first time you set it up, or scan QR Code, it is visible at that time.
+
 5. Open the cloned repository, and open the `config.properties` file in a text editor. Edit and fill each field to your own. Once done, save the file.
 
 You're all done.
