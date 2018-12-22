@@ -35,9 +35,11 @@ You're all done.
 
 `python3 connect-vpn.py`
 
-In case you wish to run it as a background process instead of keeping your terminal tab busy, you can run it like this : 
+Note that this will occupy one of your terminal and push all the logs in there itself. If you wish to keep this all in background, I suggest to use tmux / screen and launch this there.
 
-`python3 connect-vpn.py >> vpn.log 2>&1`
+You can also push all logs to a file like so : 
+
+`python3 connect-vpn.py > vpn.log 2>&1`
 
 
 ## What's the point of this?
