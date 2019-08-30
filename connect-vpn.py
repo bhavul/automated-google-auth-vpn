@@ -1,6 +1,7 @@
 import pexpect
 import subprocess
 import configparser
+import time
 
 # Author : Bhavul
 
@@ -21,8 +22,10 @@ child.expect('Enter Auth Password*', timeout=5)
 child.sendline(config['vpncreds']['VPN_PASSWORD'])
 
 child.expect('CHALLENGE*', timeout=5)
-get_gauth_code_cmd = "oathtool -b --totp "+config['googlauth']['VPN_GOOGLE_AUTH_SECRET']
+
+get_gauth_code_cmd = "oathtool -b --now='{now}' --totp {secret}".format(now=time.strftime("%a, %d %b %Y %H:%M:%S %Z", time.gmtime()), secret=config['googlauth']['VPN_GOOGLE_AUTH_SECRET'])
 vcode = subprocess.check_output(get_gauth_code_cmd,shell=True)
+print('vcode : {code}'.format(code=vcode))
 child.sendline(vcode)
 
 child.setwinsize(400,400)
